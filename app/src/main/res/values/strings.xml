@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Workout</string>
+    <string name="workout_Schedule">Workout Schedule</string>
+    <string name="about">About</string>
+    <string name="ppl">PPL (Push, Pull, Legs)</string>
+    <string name="workout_Categories">Workout Categories</string>
+    <string name="pushA">Push A</string>
+    <string name="pullA">Pull A</string>
+    <string name="legsA">legs A</string>
+    <string name="selectProgram">Select Your program</string>
+</resources>

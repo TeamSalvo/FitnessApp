@@ -1,0 +1,16 @@
+Exercise, Sets, Reps, Rest
+Legs, ., ., .
+Back squats, 5, 8, 60
+Romanian Deadlifts, 5, 5, 60
+Leg Press, 3, 6-8, 60
+Weighted Lunges, 3, 8, 60
+Calf Raises, 5, 10, 60
+Back, ., ., .
+Bent-Over Rows, 3, 6, 60
+Pull Ups , 3, 8, 30
+Barbell Shrugs, 3, 8, 30
+Face Pulls, 3, 10, 60
+Barbell curls, 3, 8, 60
+Dumbbell Hammer Curls, 3, 8, 60
+
+
