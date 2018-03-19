@@ -22,7 +22,8 @@
         <activity android:name=".DisplayAbout" />
         <activity android:name=".DisplayAboutPPL" />
         <activity android:name=".DisplayPPLInter" />
-        <activity android:name=".DisplayLegsA"></activity>
+        <activity android:name=".DisplayLegsA" />
+        <activity android:name=".WorkoutGoal"></activity>
     </application>
 
 </manifest>
