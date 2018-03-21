@@ -8,4 +8,6 @@
     <string name="pullA">Pull A</string>
     <string name="legsA">legs A</string>
     <string name="selectProgram">Select Your program</string>
+    <string name="legsTitle">Legs: Quads, Hamstrings</string>
+    <string name="pushTitle">Push: Chest, Shoulders, Triceps</string>
 </resources>

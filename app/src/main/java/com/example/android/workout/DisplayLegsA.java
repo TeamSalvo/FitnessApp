@@ -16,7 +16,7 @@ public class DisplayLegsA extends AppCompatActivity {
     PPLExercises legsPPL;
 
     TableLayout tableLayout;
-
+    TextView legsTitle;
     ArrayList<PPLExercises> legsArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,9 @@ public class DisplayLegsA extends AppCompatActivity {
         setContentView(R.layout.activity_display_legs);
 
         tableLayout = (TableLayout)findViewById(R.id.tablelayout);
+        legsTitle = (TextView)findViewById(R.id.LegsTitle);
+
+        legsTitle.setText(R.string.legsTitle);
 
         //Input from a text file containing exercise program
         String workoutExercises = "";

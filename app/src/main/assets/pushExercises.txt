@@ -1,0 +1,10 @@
+Exercise, Sets, Reps, Rest
+Barbell Bench Press, 4, 6, 60
+Overhead Press, 3, 8, 60
+Incline Dumbbell Press, 3, 8, 60
+Tricep Pushdowns, 3, 8, 60
+Overhead Tricep Extensions, 3, 8, 60
+
+
+
+
