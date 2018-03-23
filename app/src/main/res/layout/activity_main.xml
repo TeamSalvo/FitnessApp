@@ -36,7 +36,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="88dp"
         android:background="@drawable/black_gradient"
         android:elevation="0dp"
         android:fontFamily="serif"
@@ -48,10 +48,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/workout_Weight_Button"
+        android:layout_width="303dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="172dp"
+        android:background="@drawable/black_gradient"
+        android:elevation="0dp"
+        android:fontFamily="serif"
+        android:text="Weight Graph"
+        android:textColor="@android:color/holo_blue_bright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/about_me"
         android:layout_width="185dp"
         android:layout_height="85dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="132dp"
         android:background="@drawable/black_gradient"
         android:text="@string/about"
         app:layout_constraintLeft_toLeftOf="parent"

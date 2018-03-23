@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button workoutSchedule;
     Button aboutBut;
+    Button weightButton;
     //TODO Instead of creating a textview of workout categories, create several buttons that will link to textviews
 
     public final void openWorkoutCategories(View view){
@@ -19,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public final void openAbout(View view){
+        Intent intent = new Intent(this,DisplayAbout.class);
+        startActivity(intent);
+    }
+    public final void openWeight(View view){
         Intent intent = new Intent(this,DisplayAbout.class);
         startActivity(intent);
     }
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         workoutSchedule = (Button)findViewById(R.id.workout_Schedule_Button);
         //Pulls up about me page TODO add to about_me
         aboutBut = (Button)findViewById(R.id.about_me);
+        //Pulls up weight graph
+        weightButton = (Button)findViewById(R.id.workout_Weight_Button);
 
 
         workoutSchedule.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 openAbout(v);
+            }
+        });
+
+        weightButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                openWeight(v);
             }
         });
 
