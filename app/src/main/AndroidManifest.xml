@@ -24,6 +24,7 @@
         <activity android:name=".DisplayPPLInter" />
         <activity android:name=".DisplayLegsA" />
         <activity android:name=".WorkoutGoal" />
+        <activity android:name=".StrongLift" />
         <activity android:name=".DisplayPushA"></activity>
     </application>
 
