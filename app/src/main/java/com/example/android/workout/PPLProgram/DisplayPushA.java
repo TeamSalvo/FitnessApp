@@ -1,4 +1,4 @@
-package com.example.android.workout;
+package com.example.android.workout.PPLProgram;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,30 +6,31 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.android.workout.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
-public class DisplayPullA extends AppCompatActivity {
-    PPLExercises pullPPL;
-
+public class DisplayPushA extends AppCompatActivity {
+    TextView pushATitle;
+    //GridView gridView;
     TableLayout tableLayout;
-    TextView pullTitle;
-
-    ArrayList<PPLExercises> pullArray = new ArrayList<>();
+    PPLExercises pushPPL;
+    ArrayList<PPLExercises> pushArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_pull);
+        setContentView(R.layout.activity_display_push);
 
-        tableLayout = findViewById(R.id.tablelayout);
-        pullTitle = findViewById(R.id.pullTitle);
-        pullTitle.setText(R.string.pullTitle);
+        pushATitle = (TextView)findViewById(R.id.pushATitle);
+        pushATitle.setText(R.string.pushTitle);
 
+        //gridView = (GridView)findViewById(R.id.theGrid);
+        tableLayout = (TableLayout)findViewById(R.id.pushTable);
         //Input from a text file containing exercise program
         String workoutExercises = "";
         try {
-            InputStream in = getAssets().open("pullExercises.txt");
+            InputStream in = getAssets().open("pushExercises.txt");
             int size = in.available();
             byte[] buffer = new byte[size];
             in.read(buffer);
@@ -39,7 +40,6 @@ public class DisplayPullA extends AppCompatActivity {
         catch(IOException ex){
             ex.printStackTrace();
         }
-
         // Added each workout and it's stuff to an array
         String[] strArray = workoutExercises.split("[,\\n]+");
 
@@ -64,32 +64,23 @@ public class DisplayPullA extends AppCompatActivity {
                 else if (i % 4 == 3){
                     rest = strArray[i];
                     //System.out.println("Rest: " + rest);
-                    pullPPL = new PPLExercises(exercise, sets, reps, rest);
-                    pullArray.add(pullPPL);
+                    pushPPL = new PPLExercises(exercise, sets, reps, rest);
+                    pushArray.add(pushPPL);
                 }
             }
         }
-        System.out.println(pullArray.size());
-        for(int i =0; i < pullArray.size(); i++){
-            PPLExercises p;
-            p = pullArray.get(i);
-            System.out.println(p.exercise);
-        }
-
-        tableStuff(pullArray);
-
+        tableStuff(pushArray);
     }
 
     //Add exercise items to the table
-    public void tableStuff(ArrayList<PPLExercises> exerArray){
-        System.out.println(this);
-        PPLExercises exer;
-        for (int i = 0; i < exerArray.size(); i++) {
-            exer = exerArray.get(i);
-            String exercise = exer.getExercise();
-            String sets = exer.getSets();
-            String reps = exer.getReps();
-            String rest = exer.getRest();
+    public void tableStuff(ArrayList<PPLExercises> pushArray){
+        PPLExercises push;
+        for (int i = 0; i < pushArray.size(); i++) {
+            push = pushArray.get(i);
+            String exercise = push.getExercise();
+            String sets = push.getSets();
+            String reps = push.getReps();
+            String rest = push.getRest();
 
             TextView exerciseText;
             TextView setsText;

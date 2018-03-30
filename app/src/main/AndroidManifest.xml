@@ -18,15 +18,15 @@
         </activity>
         <activity android:name=".DisplayWorkout2" />
         <activity android:name=".DisplayWorkoutCategories" />
-        <activity android:name=".DisplayPPLProgram" />
+        <activity android:name=".PPLProgram.DisplayPPLProgram" />
         <activity android:name=".DisplayAbout" />
-        <activity android:name=".DisplayAboutPPL" />
-        <activity android:name=".DisplayPPLInter" />
-        <activity android:name=".DisplayLegsA" />
+        <activity android:name=".PPLProgram.DisplayAboutPPL" />
+        <activity android:name=".PPLProgram.DisplayPPLInter" />
+        <activity android:name=".PPLProgram.DisplayLegsA" />
         <activity android:name=".WorkoutGoal" />
         <activity android:name=".StrongLift" />
-        <activity android:name=".DisplayPushA" />
-        <activity android:name=".DisplayPullA"></activity>
+        <activity android:name=".PPLProgram.DisplayPushA" />
+        <activity android:name=".PPLProgram.DisplayPullA"></activity>
     </application>
 
 </manifest>
