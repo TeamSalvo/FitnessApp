@@ -1,0 +1,7 @@
+Exercise, Sets, Reps, Rest
+Pull, ., ., .
+DeadLifts, 3, 8, 60
+Pulldowns, 3, 12, 30
+Cable Rows, 3, 10, 60
+Hammer Curls, 3, 8, 60
+Dumbbell Curls, 3, 8, 60
