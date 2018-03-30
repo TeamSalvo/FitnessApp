@@ -84,6 +84,7 @@ public class DisplayLegsA extends AppCompatActivity {
     }
     //Add exercise items to the table
     public void tableStuff(ArrayList<PPLExercises> legsArray){
+        System.out.println(this);
         PPLExercises legs;
         for (int i = 0; i < legsArray.size(); i++) {
             legs = legsArray.get(i);
