@@ -32,12 +32,16 @@ public class DisplayPPLInter extends AppCompatActivity {
             }
         });
 
-
         pushABut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 openPushA(v);
 
+            }
+        });
+        pullABut.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                openPullA(v);
             }
         });
     }
@@ -51,5 +55,9 @@ public class DisplayPPLInter extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayPushA.class);
         startActivity(intent);
 
+    }
+    public final void openPullA(View view){
+        Intent intent = new Intent(this, DisplayPullA.class);
+        startActivity(intent);
     }
 }
