@@ -26,7 +26,8 @@
         <activity android:name=".WorkoutGoal" />
         <activity android:name=".StrongLift" />
         <activity android:name=".PPLProgram.DisplayPushA" />
-        <activity android:name=".PPLProgram.DisplayPullA"></activity>
+        <activity android:name=".PPLProgram.DisplayPullA" />
+        <activity android:name=".Cardio"></activity>
     </application>
 
 </manifest>
