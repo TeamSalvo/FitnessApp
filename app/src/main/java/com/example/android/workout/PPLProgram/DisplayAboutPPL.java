@@ -1,8 +1,10 @@
-package com.example.android.workout;
+package com.example.android.workout.PPLProgram;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.android.workout.R;
 
 public class DisplayAboutPPL extends AppCompatActivity {
     TextView aboutPPLTitle;
