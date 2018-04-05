@@ -17,4 +17,7 @@
     <string name="legsTitle">Legs: Quads, Hamstrings</string>
     <string name="pushTitle">Push: Chest, Shoulders, Triceps</string>
     <string name="pullTitle">Pull: Back, Biceps</string>
+    <string name="Cardio">Cardio Programs</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
 </resources>
