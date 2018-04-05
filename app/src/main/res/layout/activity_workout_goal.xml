@@ -6,4 +6,55 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.workout.WorkoutGoal">
 
+    <TextView
+        android:id="@+id/goalTitle"
+        android:layout_width="262dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/goals"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/goalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/goal"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
+        android:layout_marginLeft="32dp" />
+
+    <TextView
+        android:id="@+id/metText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/met"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/desiredText"
+        app:layout_constraintStart_toEndOf="@+id/goalText"
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="144dp" />
+
+    <TextView
+        android:id="@+id/desiredText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/desired"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
+        android:layout_marginRight="32dp" />
 </android.support.constraint.ConstraintLayout>
