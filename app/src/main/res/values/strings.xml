@@ -6,6 +6,9 @@
     <string name="strong">Strong Lifts</string>
     <string name="cardio">Cardio</string>
     <string name="goals">Goals</string>
+    <string name="goal">Goal</string>
+    <string name="met">Met</string>
+    <string name="desired">Desired</string>
     <string name="workout_Categories">Workout Categories</string>
     <string name="pushA">Push A</string>
     <string name="pullA">Pull A</string>
