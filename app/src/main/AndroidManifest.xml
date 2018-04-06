@@ -29,7 +29,8 @@
         <activity android:name=".PPLProgram.DisplayPullA" />
         <activity android:name=".CardioProgramDir.Cardio" />
         <activity android:name=".CardioProgramDir.CardioProgram" />
-        <activity android:name=".UserInfo"></activity>
+        <activity android:name=".UserInfo" />
+        <activity android:name=".DisplayWeightGraph"></activity>
     </application>
 
 </manifest>
