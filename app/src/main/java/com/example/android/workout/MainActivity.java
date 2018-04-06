@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         NotificationUtils notificationUtils = new NotificationUtils(this);
 
         notificationUtils.launchNotification();
