@@ -31,6 +31,14 @@
         <activity android:name=".CardioProgramDir.CardioProgram" />
         <activity android:name=".UserInfo" />
         <activity android:name=".DisplayWeightGraph"></activity>
+        <activity
+            android:name=".DisplayCheckpage"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
+        </activity>
     </application>
+
+
 
 </manifest>
