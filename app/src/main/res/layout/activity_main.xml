@@ -8,14 +8,14 @@
     tools:context="com.example.android.workout.MainActivity">
 
     <!--<TextView-->
-        <!--android:id="@+id/workout_categories"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:clickable="true"-->
-        <!--android:padding="16dp"-->
-        <!--android:textSize="20sp"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <!--android:id="@+id/workout_categories"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:clickable="true"-->
+    <!--android:padding="16dp"-->
+    <!--android:textSize="20sp"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/imageView"
@@ -79,15 +79,35 @@
         android:text="Weight Graph"
         android:textColor="@android:color/holo_blue_bright"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/workout_User_Info_Button"
+        android:layout_width="303dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="340dp"
+        android:background="@drawable/black_gradient"
+        android:elevation="0dp"
+        android:fontFamily="serif"
+        android:text="User Info"
+        android:textColor="@android:color/holo_blue_bright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/about_me"
-        android:layout_width="185dp"
-        android:layout_height="85dp"
-        android:layout_marginTop="256dp"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="272dp"
         android:background="@drawable/black_gradient"
         android:text="@string/about"
         app:layout_constraintLeft_toLeftOf="parent"

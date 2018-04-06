@@ -28,7 +28,8 @@
         <activity android:name=".PPLProgram.DisplayPushA" />
         <activity android:name=".PPLProgram.DisplayPullA" />
         <activity android:name=".Cardio" />
-        <activity android:name=".CardioProgram"></activity>
+        <activity android:name=".CardioProgram" />
+        <activity android:name=".UserInfo"></activity>
     </application>
 
 </manifest>
