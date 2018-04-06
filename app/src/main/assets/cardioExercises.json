@@ -1,0 +1,33 @@
+[
+  {
+    "Exercise": "Jumping Jacks",
+    "Description": "3 sets",
+    "Image": "jumping_jacks"
+  },
+  {
+    "Exercise": "Mountain Climbers",
+    "Description": "3 sets",
+    "Image": "mountain_climbers"
+  },
+  {
+    "Exercise": "Punches",
+    "Description": "Utilize a punching bag for 10 minutes",
+    "Image": "punches"
+  },
+  {
+    "Exercise": "Cycling",
+    "Description": "Cycle for 10 minutes",
+    "Image": "punches"
+  },
+  {
+    "Exercise": "Punches",
+    "Description": "Punch as many things as you can",
+    "Image": "punches"
+  },
+  {
+    "Exercise": "Running",
+    "Description": "Run.",
+    "Image": ""
+  }
+
+]

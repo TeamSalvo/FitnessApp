@@ -22,6 +22,7 @@ public class DisplayPPLProgram extends AppCompatActivity {
 
         aboutPPLBut = (Button)findViewById(R.id.about_ppl);
         aboutPPLBut.setText("About PPL Program");
+        aboutPPLBut.setTextSize(30);
         aboutPPLBut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
@@ -32,7 +33,7 @@ public class DisplayPPLProgram extends AppCompatActivity {
         });
 
         intermediateProgram = (Button)findViewById(R.id.intermediate_program);
-        intermediateProgram.setText("Intermediate Program");
+        //intermediateProgram.setText("Beginner Program");
         intermediateProgram.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
