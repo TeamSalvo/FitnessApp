@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public final void openWeight(View view){
-        Intent intent = new Intent(this,DisplayAbout.class);
+        Intent intent = new Intent(this,DisplayWeightGraph.class);
         startActivity(intent);
     }
 
