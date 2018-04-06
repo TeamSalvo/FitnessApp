@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class UserInfo extends AppCompatActivity {
 
@@ -22,6 +23,9 @@ public class UserInfo extends AppCompatActivity {
         mWeight=R.id.user_weight;
         mGoalWeight=R.id.user_goal_weight;
     }
+    public void showToast(View view){
+        Toast.makeText(this, "User Info Saved", Toast.LENGTH_LONG).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class UserInfo extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getInfo();
+                showToast(v);
                 openMain(v);
             }
         });
