@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.android.workout.R;
 
 /**
- * Created by pures on 4/5/2018.
+ * Created by Kent on 4/5/2018.
  */
 
 public class CustomListView extends ArrayAdapter<String>{

@@ -1,14 +1,17 @@
-package com.example.android.workout;
+package com.example.android.workout.CardioProgramDir;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.android.workout.CustomListView;
+import com.example.android.workout.R;
+
 public class CardioProgram extends AppCompatActivity {
-    ListView cardioListView;
-    String[] workouts = {"Mountain Climbers", "Jumping Jacks", "Streching"};
-    String[] desc = {"workout1", "workout2", "workout3"};
-    Integer[] imgid={R.drawable.girl_weightt,R.drawable.girl_one, R.drawable.girl_one};
+    private ListView cardioListView;
+    private String[] workouts = {"Test"};
+    private String[] desc = {"Test"};
+    private Integer[] imgid={R.drawable.girl_weightt};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
