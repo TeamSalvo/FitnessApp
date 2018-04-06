@@ -30,7 +30,7 @@ public class Cardio extends AppCompatActivity {
     }
 
     public final void openCardio(View view){
-        Intent intent = new Intent(this,DisplayAbout.class);
+        Intent intent = new Intent(this,CardioProgram.class);
         startActivity(intent);
     }
 }
