@@ -35,7 +35,7 @@
         android:id="@+id/metText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginStart="144dp"
         android:layout_marginTop="16dp"
         android:text="@string/met"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toStartOf="@+id/desiredText"
         app:layout_constraintStart_toEndOf="@+id/goalText"
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginRight="32dp"
+        android:layout_marginRight="40dp"
         android:layout_marginLeft="144dp" />
 
     <TextView
@@ -57,4 +57,53 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
         android:layout_marginRight="32dp" />
+
+    <EditText
+        android:id="@+id/goalName"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Goal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalText"
+        android:layout_marginLeft="32dp" />
+
+    <EditText
+        android:id="@+id/metGoal"
+        android:layout_width="49dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/goalName"
+        app:layout_constraintTop_toBottomOf="@+id/metText"
+        android:layout_marginLeft="14dp" />
+
+    <EditText
+        android:id="@+id/desiredGoal"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="31dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desiredText"
+        android:layout_marginRight="31dp" />
+
+    <TextView
+        android:id="@+id/slashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:text="/"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/metText"
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
+        android:layout_marginLeft="14dp" />
 </android.support.constraint.ConstraintLayout>
