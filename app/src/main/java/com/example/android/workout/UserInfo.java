@@ -10,18 +10,18 @@ import android.widget.Toast;
 public class UserInfo extends AppCompatActivity {
 
     Button buttonSave;
-    int mHeight=0;
-    int mWeight=0;
-    int mGoalWeight=0;
+    String mHeight="";
+    String mWeight="";
+    String mGoalWeight="";
 
     public final void openMain(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     public final void getInfo(){
-        mHeight=R.id.user_height;
-        mWeight=R.id.user_weight;
-        mGoalWeight=R.id.user_goal_weight;
+        //mHeight=R.id.user_height;
+        //mWeight=R.id.user_weight;
+        //mGoalWeight=R.id.user_goal_weight;
     }
     public void showToast(View view){
         Toast.makeText(this, "User Info Saved", Toast.LENGTH_LONG).show();
