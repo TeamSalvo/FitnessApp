@@ -51,6 +51,8 @@ public class CustomListView extends ArrayAdapter<String>{
         }
 
         viewHolder.ivw.setImageResource(imgId[position]);
+        viewHolder.ivw.setMaxHeight(10);
+        viewHolder.ivw.setMaxWidth(10);
         viewHolder.tvw1.setText(workout[position]);
         viewHolder.tvw2.setText(desc[position]);
         return r;

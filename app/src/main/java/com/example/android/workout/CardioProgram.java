@@ -8,7 +8,7 @@ public class CardioProgram extends AppCompatActivity {
     ListView cardioListView;
     String[] workouts = {"Mountain Climbers", "Jumping Jacks", "Streching"};
     String[] desc = {"workout1", "workout2", "workout3"};
-    Integer[] imgid={R.drawable.jogging,R.drawable.jogging, R.drawable.jogging};
+    Integer[] imgid={R.drawable.girl_weightt,R.drawable.girl_one, R.drawable.girl_one};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
