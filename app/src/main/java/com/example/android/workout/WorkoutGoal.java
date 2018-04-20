@@ -15,6 +15,7 @@ import com.example.android.workout.goalObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import static android.text.InputType.TYPE_DATETIME_VARIATION_DATE;
@@ -26,6 +27,7 @@ public class WorkoutGoal extends AppCompatActivity {
     String goalName = null;
     Integer desiredGoal =  null;
     Date goalDate = null;
+    ArrayList <goalObject> goalList = new ArrayList <goalObject>();
 
 
     @Override
@@ -40,7 +42,14 @@ public class WorkoutGoal extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 addGoalDialog(v);
-                goalObject newGoal = new goalObject();
+                goalObject newGoal = new goalObject(goalName, desiredGoal, goalDate);
+                goalName = null;
+                desiredGoal = null;
+                goalDate = null;
+                if (newGoal.goalName != null)
+                {
+                    goalList.add(newGoal);
+                }
 
             }
         });

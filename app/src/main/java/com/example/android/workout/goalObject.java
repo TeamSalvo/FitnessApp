@@ -16,4 +16,12 @@ public class goalObject {
     Button incrementAchieved;
     Integer desiredGoal;
     Date completionDate;
+
+    goalObject(String name, Integer desired, Date complete)
+    {
+        goalName = name;
+        goalAchieved = 0;
+        desiredGoal = desired;
+        completionDate = complete;
+    }
 }
