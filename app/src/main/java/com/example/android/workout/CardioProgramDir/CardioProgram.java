@@ -29,29 +29,26 @@ public class CardioProgram extends AppCompatActivity {
     String[] desc;
     Button restButton;
 
-
-
-
     private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.girl_one, R.drawable.girl_one, R.drawable.girl_one};
 
     ArrayList<String> numberList = new ArrayList<>();
-
+    //timer------------------------------------------------------------------------------------
     TextView countdownText;
     Button countdownButton;
     Button resetButton;
     CountDownTimer countDownTimer;
+
     int initialTime = 60000;
     long timeLeftInMilliseconds = initialTime;
 
     boolean timerRunning = false;
-
+    //timer------------------------------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardio_program);
         cardioListView = findViewById(R.id.cardioListView);
         restButton = findViewById(R.id.cardioRestButton);
-        get_json();
         //Add values to workouts,desc, imgid
         //Make sure that the length of each array is the same. workouts[1]=desc[1]=imgid[1]
 
@@ -63,14 +60,21 @@ public class CardioProgram extends AppCompatActivity {
                 popupRestTimer(view);
             }
         });
-
-
-
-
         //Make the customListView
+        updateEverything();
+    }
+
+    void updateEverything(){
+        get_json();
         CustomListView customListView = new CustomListView(this,workouts, desc, imgid);
         cardioListView.setAdapter(customListView);
     }
+
+
+
+
+
+    //timer------------------------------------------------------------------------------------
     public void popupRestTimer(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View mView = getLayoutInflater().inflate(R.layout.timer_pop_up,null);
