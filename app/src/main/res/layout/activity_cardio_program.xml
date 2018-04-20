@@ -23,11 +23,26 @@
     <ListView
         android:id="@+id/cardioListView"
         android:layout_width="match_parent"
-        android:layout_height="510dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="480dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardioProgram_Text"
+        app:layout_constraintTop_toBottomOf="@+id/cardioProgram_Text" />
+
+    <Button
+        android:id="@+id/cardioRestButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cardioListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardioProgram_Text" />
+        tools:text="Rest"
+        android:text="Rest"
+
+        />
+
 
 
 
