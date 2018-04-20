@@ -17,6 +17,8 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_ID = "com.android.fitnessalerts.ANDROID";
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
     public static final String BASIC_NOTIF = "BASIC_NOTIF";
+    boolean enableVibrate = true;
+    boolean enableLights = true;
 
     public NotificationUtils(Context base){
         super(base);
@@ -27,8 +29,8 @@ public class NotificationUtils extends ContextWrapper {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel androidChannel = new NotificationChannel(ANDROID_CHANNEL_ID, ANDROID_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
 
-            androidChannel.enableLights(true);
-            androidChannel.enableVibration(true);
+            androidChannel.enableLights(enableLights);
+            androidChannel.enableVibration(enableVibrate);
             androidChannel.setLightColor(Color.GREEN);
             androidChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
         }
@@ -42,6 +44,10 @@ public class NotificationUtils extends ContextWrapper {
 
 
         return mManager;
+    }
+
+    public void updateVibrate(boolean set){
+        enableVibrate = set;
     }
 
     public void launchNotification() {
@@ -61,6 +67,11 @@ public class NotificationUtils extends ContextWrapper {
 
         int notificationId = 0;
 
+        Notification note = mBuilder.build();
+        if(enableVibrate) {
+            note.defaults |= Notification.DEFAULT_VIBRATE;
+        }
+        note.defaults |= Notification.DEFAULT_SOUND;
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
 
