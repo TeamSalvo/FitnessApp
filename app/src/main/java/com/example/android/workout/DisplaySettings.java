@@ -26,9 +26,9 @@ public class DisplaySettings extends AppCompatActivity {
         //    vibrateSwitch.setShowText(true);
         //}
 
-        vibrateSwitch = (Switch)findViewById(R.id.vibrate_Switch);
+        //vibrateSwitch = (Switch)findViewById(R.id.vibrate_Switch);
 
-        testNotification = (Button)findViewById(R.id.launch_notification);
+        //testNotification = (Button)findViewById(R.id.launch_notification);
 
         vibrateSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
