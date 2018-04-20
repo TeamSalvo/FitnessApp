@@ -8,7 +8,9 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.android.workout.goalObject;
 
@@ -22,12 +24,13 @@ import static android.text.InputType.TYPE_DATETIME_VARIATION_DATE;
 
 public class WorkoutGoal extends AppCompatActivity {
 
+    LinearLayout layout;
     Button addGoalButton;
     ProgressBar achievementProgress;
     String goalName = null;
     Integer desiredGoal =  null;
     Date goalDate = null;
-    ArrayList <goalObject> goalList = new ArrayList <goalObject>();
+    ArrayList <goalObject> goalList = new ArrayList <>();
 
 
     @Override
@@ -35,6 +38,7 @@ public class WorkoutGoal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_goal);
 
+        layout = findViewById(R.id.vertLinLayout);
         addGoalButton = findViewById(R.id.addGoal);
         achievementProgress = findViewById(R.id.progressBar);
 
@@ -49,8 +53,8 @@ public class WorkoutGoal extends AppCompatActivity {
                 if (newGoal.goalName != null)
                 {
                     goalList.add(newGoal);
+                    setUpVertLayout(v);
                 }
-
             }
         });
     }
@@ -129,5 +133,29 @@ public class WorkoutGoal extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public final void setUpVertLayout(View view)
+    {
+        layout.removeAllViews();
+        for(goalObject gO : goalList)
+        {
+            LinearLayout l = new LinearLayout(this);
+            l.setOrientation(LinearLayout.HORIZONTAL);
+            l.addView(gO.getRemoveGoal());
+            TextView tv = null;
+            tv.setText(gO.getGoalName());
+            l.addView(tv);
+            l.addView(gO.getDecrementAchieved());
+            TextView tev = null;
+            tev.setText(gO.getGoalAchieved());
+            l.addView(tev);
+            l.addView(gO.getIncrementAchieved());
+            TextView tve = null;
+            tve.setText(gO.getDesiredGoal());
+            l.addView(tve);
+            layout.addView(l);
+
+        }
     }
 }

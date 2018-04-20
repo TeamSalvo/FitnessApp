@@ -85,15 +85,16 @@
         android:layout_marginLeft="14dp" />
 
     <ScrollView
-        android:id="@+id/scrollView3"
+        android:id="@+id/goalListScroll"
         android:layout_width="match_parent"
         android:layout_height="360dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/addGoal"
         app:layout_constraintTop_toBottomOf="@+id/goalText">
 
         <LinearLayout
+            android:id="@+id/vertLinLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
@@ -104,7 +105,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="411dp"
         android:layout_height="33dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="571dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp" />
 </android.support.constraint.ConstraintLayout>
