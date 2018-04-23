@@ -1,15 +1,19 @@
 package com.example.android.workout;
 
-import android.view.View;
-import android.widget.Button;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class GoalObject extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_goal_object);
+    }
+}
 
 
-import java.util.Date;
-
-/**
- * Created by jesse on 04/19/2018.
- */
-
+/*
 public class goalObject {
     Button removeGoal;
     String goalName;
@@ -55,38 +59,39 @@ public class goalObject {
 
             }
         });
-        */
+
     }
 
-    Button getRemoveGoal()
-    {
-        return removeGoal;
-    }
+            Button getRemoveGoal()
+            {
+            return removeGoal;
+            }
 
-    String getGoalName()
-    {
-        return goalName;
-    }
+            String getGoalName()
+            {
+            return goalName;
+            }
 
-    Button getDecrementAchieved()
-    {
-        return decrementAchieved;
-    }
+            Button getDecrementAchieved()
+            {
+            return decrementAchieved;
+            }
 
-    Integer getGoalAchieved()
-    {
-        return goalAchieved;
-    }
+            Integer getGoalAchieved()
+            {
+            return goalAchieved;
+            }
 
-    Button getIncrementAchieved()
-    {
-        return incrementAchieved;
-    }
+            Button getIncrementAchieved()
+            {
+            return incrementAchieved;
+            }
 
-    Integer getDesiredGoal()
-    {
-        return desiredGoal;
-    }
+            Integer getDesiredGoal()
+            {
+            return desiredGoal;
+            }
 
 
-}
+            }
+ */

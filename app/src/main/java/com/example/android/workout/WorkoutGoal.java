@@ -10,9 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import com.example.android.workout.goalObject;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -30,7 +27,7 @@ public class WorkoutGoal extends AppCompatActivity {
     String goalName = null;
     Integer desiredGoal =  null;
     Date goalDate = null;
-    ArrayList <goalObject> goalList = new ArrayList <>();
+    //ArrayList <goalObject> goalList = new ArrayList <>();
 
 
     @Override
@@ -46,13 +43,13 @@ public class WorkoutGoal extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 addGoalDialog(v);
-                goalObject newGoal = new goalObject(goalName, desiredGoal, goalDate);
+                //goalObject newGoal = new goalObject(goalName, desiredGoal, goalDate);
                 goalName = null;
                 desiredGoal = null;
                 goalDate = null;
-                if (newGoal.goalName != null)
+                //if (newGoal.goalName != null)
                 {
-                    goalList.add(newGoal);
+                    //goalList.add(newGoal);
                     setUpVertLayout(v);
                 }
             }
@@ -138,7 +135,7 @@ public class WorkoutGoal extends AppCompatActivity {
     public final void setUpVertLayout(View view)
     {
         layout.removeAllViews();
-        for(goalObject gO : goalList)
+        /*for(goalObject gO : goalList)
         {
             LinearLayout l = new LinearLayout(this);
             l.setOrientation(LinearLayout.HORIZONTAL);
@@ -156,6 +153,6 @@ public class WorkoutGoal extends AppCompatActivity {
             l.addView(tve);
             layout.addView(l);
 
-        }
+        }*/
     }
 }
