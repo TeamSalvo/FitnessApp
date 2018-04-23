@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 public class DisplayWeightGraph extends AppCompatActivity {
 
     Button calculateBMI;
@@ -18,10 +22,14 @@ public class DisplayWeightGraph extends AppCompatActivity {
     Double height = 0.0;
     Double BMI = 0.0;
 
+    LineGraphSeries<DataPoint> series;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_weight_graph);
+
+        initGraph();
 
         calculateBMI = findViewById(R.id.button_CalculateBMI);
 
@@ -29,9 +37,23 @@ public class DisplayWeightGraph extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 EnterUserHeight(v);
-
             }
         });
+    }
+
+    private void initGraph(){
+        int dataPoints = 1000;
+        double x,y;
+        x=0;
+
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        series = new LineGraphSeries<DataPoint>();
+        for(int i = 0; i<dataPoints; i++){
+            x = x + 0.01;
+            y = Math.sin(x);
+            series.appendData(new DataPoint(x,y),true,dataPoints);
+        }
+        graph.addSeries(series);
     }
 
     public final void EnterUserHeight(final View view){
@@ -106,4 +128,6 @@ public class DisplayWeightGraph extends AppCompatActivity {
             textView.setTextColor(Color.RED);
         }
     }
+
+
 }
