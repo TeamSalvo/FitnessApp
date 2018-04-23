@@ -43,7 +43,7 @@
             app:layout_constraintVertical_bias="0.105" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_AddDataPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Data Point" />
@@ -52,6 +52,16 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:id="@+id/graph"
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
             />
 
         <TextView
