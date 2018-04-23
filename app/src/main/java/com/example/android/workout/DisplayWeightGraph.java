@@ -20,8 +20,6 @@ import java.util.ArrayList;
 
 public class DisplayWeightGraph extends AppCompatActivity {
 
-
-
     Button calculateBMI;
     Button addDataPoint;
     Double weight = 0.0;
