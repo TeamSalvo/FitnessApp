@@ -16,7 +16,11 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DisplayWeightGraph extends AppCompatActivity {
 
@@ -25,17 +29,36 @@ public class DisplayWeightGraph extends AppCompatActivity {
     Double weight = 0.0;
     Double height = 0.0;
     Double BMI = 0.0;
+    int dataPoints = 0;
 
     LineGraphSeries<DataPoint> series;
     ArrayList<Double> weights = new ArrayList<Double>();
+
+
+    GraphView graph;
+
+    String userInfoString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_weight_graph);
 
+        readFile();
+
         calculateBMI = findViewById(R.id.button_CalculateBMI);
         addDataPoint = findViewById(R.id.button_AddDataPoint);
+        graph = (GraphView)findViewById(R.id.graph);
+        graph.getViewport().setXAxisBoundsManual(true);
+
+        graph.getViewport().setMaxX(10);
+        graph.getViewport().setMinX(5);
+
+        graph.getViewport().setScrollable(true);
+        graph.getViewport().setScalable(true);
+
+
+        initGraph(graph);
 
         addDataPoint.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -49,18 +72,41 @@ public class DisplayWeightGraph extends AppCompatActivity {
         });
     }
 
-    private void initGraph(){
-        int dataPoints = weights.size();
+    private void readFile(){
+        try {
+            InputStream in = getAssets().open("userInfo.txt");
+            int size = in.available();
+            byte[] buffer = new byte[size];
+            in.read(buffer);
+            in.close();
+            userInfoString = new String(buffer);
+        }
+        catch(IOException ex){
+            ex.printStackTrace();
+        }
+        List<String> myList = new ArrayList<String>(Arrays.asList(userInfoString.split(",")));
+        for(String i:myList){
+            weights.add(Double.parseDouble(i));
+        }
+    }
+
+    private void initGraph(GraphView graph){
+        dataPoints = weights.size();
         double x,y;
         x=0;
-
-        GraphView graph = (GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
         for(Double i: weights){
             x = x + 1;
             y = i;
-            series.appendData(new DataPoint(x,y),true,dataPoints);
+            series.appendData(new DataPoint(x,y),true, dataPoints);
         }
+        graph.addSeries(series);
+    }
+
+    private void addToGraph(Double y){
+        dataPoints++;
+        double x = series.getHighestValueX()+1;
+        series.appendData(new DataPoint(x,y),true, dataPoints);
         graph.addSeries(series);
     }
 
@@ -75,7 +121,7 @@ public class DisplayWeightGraph extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 weights.add(Double.parseDouble(input.getText().toString()));
-                initGraph();
+                addToGraph(Double.parseDouble(input.getText().toString()));
             }
         });
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
