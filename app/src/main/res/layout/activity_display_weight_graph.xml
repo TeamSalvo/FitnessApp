@@ -32,7 +32,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical|center"
-            android:text="Graph of Weight"
+            android:text="Weight Graph"
             android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="normal|bold"
@@ -46,8 +46,9 @@
             android:id="@+id/button_AddDataPoint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Add Data Point" />
-        
+
         <com.jjoe64.graphview.GraphView
             android:layout_width="match_parent"
             android:layout_height="300dp"
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="BMI"
+            android:text=" BMI Calculator"
             android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="bold" />
