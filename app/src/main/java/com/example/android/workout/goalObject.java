@@ -2,13 +2,101 @@ package com.example.android.workout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.Date;
 
 public class GoalObject extends AppCompatActivity {
+
+    Button removeGoal;
+    Button decrementButton;
+    Button incrementButton;
+    TextView goalName;
+    TextView goalMet;
+    TextView goalDesired;
+    Date completionDate;
+    LinearLayout layoutView;
+    Boolean deleteGoal = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal_object);
+        removeGoal = findViewById(R.id.removeGoalButton);
+        decrementButton = findViewById(R.id.decrementButton);
+        incrementButton = findViewById(R.id.incrementButton);
+        goalName = findViewById(R.id.goalName);
+        goalMet = findViewById(R.id.metGoal);
+        goalDesired = findViewById(R.id.desiredGoal);
+        layoutView = findViewById(R.id.layoutView);
+
+        removeGoal.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                deleteGoal = true;
+
+            }
+        });
+
+        decrementButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Integer tempInt = Integer.parseInt(goalMet.toString());
+                if (tempInt != 0)
+                {
+                    tempInt--;
+                }
+                goalMet.setText(tempInt.toString());
+
+            }
+        });
+
+        incrementButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Integer tempInt = Integer.parseInt(goalMet.toString());
+                tempInt++;
+                goalMet.setText(tempInt.toString());
+
+            }
+        });
+    }
+
+    void setGoalName(String s)
+    {
+        goalName.setText(s);
+    }
+
+    void setGoalMet(String s)
+    {
+        goalMet.setText(s);
+    }
+
+    void setGoalDesired(String s)
+    {
+        goalDesired.setText(s);
+    }
+
+    void setGoalDate(Date d)
+    {
+        completionDate = d;
+    }
+
+    String getGoalName()
+    {
+        return goalName.toString();
+    }
+
+    Boolean getDeleteGoal()
+    {
+        return deleteGoal;
+    }
+
+    LinearLayout getLayoutView()
+    {
+        return layoutView;
     }
 }
 
