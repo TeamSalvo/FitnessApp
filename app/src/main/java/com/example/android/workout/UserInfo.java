@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
 public class UserInfo extends AppCompatActivity {
 
     Button buttonSave;
@@ -19,12 +22,9 @@ public class UserInfo extends AppCompatActivity {
         startActivity(intent);
     }
     public final void getInfo(){
-        //mHeight=R.id.user_height;
-        //mWeight=R.id.user_weight;
-        //mGoalWeight=R.id.user_goal_weight;
-    }
-    public void showToast(View view){
-        Toast.makeText(this, "User Info Saved", Toast.LENGTH_LONG).show();
+        mHeight=R.id.user_height+"";
+        mWeight=R.id.user_weight+"";
+        mGoalWeight=R.id.user_goal_weight+"";
     }
 
     @Override
@@ -37,9 +37,36 @@ public class UserInfo extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 getInfo();
-                showToast(v);
+                saveFile();
                 openMain(v);
             }
         });
+    }
+    private void saveFile(){
+        try {
+            FileOutputStream file_GoalWeight = openFileOutput("GoalWeight.txt",MODE_PRIVATE);
+            FileOutputStream file_UserWeight = openFileOutput("UserWeight.txt",MODE_PRIVATE);
+            FileOutputStream file_UserHeight = openFileOutput("UserHeight.txt",MODE_PRIVATE);
+            OutputStreamWriter outputFile_GoalWeight = new OutputStreamWriter(file_GoalWeight);
+            OutputStreamWriter outputFile_UserWeight = new OutputStreamWriter(file_UserWeight);
+            OutputStreamWriter outputFile_UserHeight = new OutputStreamWriter(file_UserHeight);
+
+
+            outputFile_GoalWeight.write(mGoalWeight+"\n");
+            outputFile_UserWeight.write(mWeight+"\n");
+            outputFile_UserHeight.write(mHeight+"\n");
+
+            outputFile_GoalWeight.flush();
+            outputFile_UserWeight.flush();
+            outputFile_UserHeight.flush();
+
+            outputFile_GoalWeight.close();
+            outputFile_UserWeight.close();
+            outputFile_UserHeight.close();
+
+            Toast.makeText(UserInfo.this, "User Info Saved",Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(UserInfo.this, "Error: User Info Failed to Save",Toast.LENGTH_LONG).show();
+        }
     }
 }
