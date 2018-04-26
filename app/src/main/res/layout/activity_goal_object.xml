@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.workout.GoalObject">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/removeGoalButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="X" />
+
+    <TextView
+        android:id="@+id/goalName"
+        android:layout_width="106dp"
+        android:layout_height="30dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/decrementButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="-"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/metGoal"
+        android:layout_width="50dp"
+        android:layout_height="34dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/incrementButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="+" />
+
+    <TextView
+        android:id="@+id/desiredGoal"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
+

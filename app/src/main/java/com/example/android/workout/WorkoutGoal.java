@@ -27,7 +27,7 @@ public class WorkoutGoal extends AppCompatActivity {
     String goalName = null;
     Integer desiredGoal =  null;
     Date goalDate = null;
-    //ArrayList <goalObject> goalList = new ArrayList <>();
+    ArrayList <GoalObject> goalList = new ArrayList <>();
 
 
     @Override
@@ -43,13 +43,19 @@ public class WorkoutGoal extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 addGoalDialog(v);
-                //goalObject newGoal = new goalObject(goalName, desiredGoal, goalDate);
+                GoalObject newGoal = new GoalObject();
+                /*
+                newGoal.setGoalDesired(desiredGoal.toString());
+                newGoal.setGoalMet("0");
+                newGoal.setGoalName(goalName);
+                newGoal.setGoalDate(goalDate);
+                */
                 goalName = null;
                 desiredGoal = null;
                 goalDate = null;
-                //if (newGoal.goalName != null)
+                if (newGoal == null)
                 {
-                    //goalList.add(newGoal);
+                    goalList.add(newGoal);
                     setUpVertLayout(v);
                 }
             }
@@ -135,24 +141,12 @@ public class WorkoutGoal extends AppCompatActivity {
     public final void setUpVertLayout(View view)
     {
         layout.removeAllViews();
-        /*for(goalObject gO : goalList)
+        for(GoalObject gO : goalList)
         {
-            LinearLayout l = new LinearLayout(this);
-            l.setOrientation(LinearLayout.HORIZONTAL);
-            l.addView(gO.getRemoveGoal());
-            TextView tv = null;
-            tv.setText(gO.getGoalName());
-            l.addView(tv);
-            l.addView(gO.getDecrementAchieved());
-            TextView tev = null;
-            tev.setText(gO.getGoalAchieved());
-            l.addView(tev);
-            l.addView(gO.getIncrementAchieved());
-            TextView tve = null;
-            tve.setText(gO.getDesiredGoal());
-            l.addView(tve);
-            layout.addView(l);
-
-        }*/
+            int i;
+           if(!gO.getDeleteGoal())
+               i = 1+2;
+            layout.addView(gO.getLayoutView());
+        }
     }
 }
