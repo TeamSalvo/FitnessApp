@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.android.workout.CustomListView;
@@ -36,7 +34,7 @@ public class DisplayPullA extends AppCompatActivity {
     ArrayList<String> workoutsA;
     ArrayList<String> descA;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
+    private Integer[] imgid={R.drawable.deadliftspic,R.drawable.pulldowns,R.drawable.pulldowns,R.drawable.dumbellthingys,R.drawable.pullups,R.drawable.dot,R.drawable.dot,R.drawable.dot};
 
     ArrayList<String> numberList = new ArrayList<>();
 
@@ -65,7 +63,7 @@ public class DisplayPullA extends AppCompatActivity {
         title = findViewById(R.id.cardioProgram_Text);
         title.setText("Pull: Back, Biceps");
         title.setTextSize(20);
-        title.setTextColor(Color.CYAN);
+        //title.setTextColor(Color.CYAN);
         title.setTypeface(null, Typeface.BOLD);
 
         workoutsA = new ArrayList<String>();

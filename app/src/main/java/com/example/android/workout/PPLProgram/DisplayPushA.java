@@ -38,7 +38,7 @@ public class DisplayPushA extends AppCompatActivity {
 
     TextView title;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
+    private Integer[] imgid={R.drawable.benchpress,R.drawable.dboverhead,R.drawable.inclinebenchpress,R.drawable.dumbellextensions,R.drawable.pushups,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
 
     ArrayList<String> numberList = new ArrayList<>();
 
@@ -71,7 +71,7 @@ public class DisplayPushA extends AppCompatActivity {
         title = findViewById(R.id.cardioProgram_Text);
         title.setText("Push: Chest, Triceps");
         title.setTextSize(20);
-        title.setTextColor(Color.CYAN);
+        //title.setTextColor(Color.CYAN);
         title.setTypeface(null, Typeface.BOLD);
 
         //Add values to workouts,desc, imgid
