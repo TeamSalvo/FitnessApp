@@ -44,14 +44,16 @@ public class WorkoutGoal extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 addGoalDialog(v);
                 GoalObject newGoal = new GoalObject();
+                /*
                 newGoal.setGoalDesired(desiredGoal.toString());
                 newGoal.setGoalMet("0");
                 newGoal.setGoalName(goalName);
                 newGoal.setGoalDate(goalDate);
+                */
                 goalName = null;
                 desiredGoal = null;
                 goalDate = null;
-                if (newGoal.getGoalName() != null)
+                if (newGoal == null)
                 {
                     goalList.add(newGoal);
                     setUpVertLayout(v);
@@ -141,7 +143,9 @@ public class WorkoutGoal extends AppCompatActivity {
         layout.removeAllViews();
         for(GoalObject gO : goalList)
         {
+            int i;
            if(!gO.getDeleteGoal())
+               i = 1+2;
             layout.addView(gO.getLayoutView());
         }
     }
