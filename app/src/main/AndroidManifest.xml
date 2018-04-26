@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,14 +32,13 @@
         <activity android:name=".CardioProgramDir.Cardio" />
         <activity android:name=".CardioProgramDir.CardioProgram" />
         <activity android:name=".UserInfo" />
-        <activity android:name=".DisplayWeightGraph"></activity>
-        <activity android:name=".DisplaySettings"></activity>
+        <activity android:name=".DisplayWeightGraph" />
+        <activity android:name=".DisplaySettings" />
         <activity
             android:name=".DisplayCheckpage"
+            android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:taskAffinity=""
-            android:excludeFromRecents="true">
-        </activity>
+            android:taskAffinity=""></activity>
     </application>
 
 

@@ -1,51 +1,208 @@
 package com.example.android.workout.PPLProgram;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.workout.CustomListView;
 import com.example.android.workout.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DisplayPullA extends AppCompatActivity {
-    PPLExercises pullPPL;
+    private ListView cardioListView;
+    String[] workouts;
+    String[] desc;
+    Button restButton;
+    TextView title;
+    ArrayList<String> workoutsA;
+    ArrayList<String> descA;
 
-    TableLayout tableLayout;
-    TextView pullTitle;
-    //Timer-----------------------------------------------------------------------
+    private Integer[] imgid={R.drawable.deadliftspic,R.drawable.pulldowns,R.drawable.pulldowns,R.drawable.dumbellthingys,R.drawable.pullups,R.drawable.dot,R.drawable.dot,R.drawable.dot};
+
+    ArrayList<String> numberList = new ArrayList<>();
+
+    CustomListView customListView;
+
+    //timer------------------------------------------------------------------------------------
     TextView countdownText;
     Button countdownButton;
     Button resetButton;
+    Button addExerciseButton;
     CountDownTimer countDownTimer;
 
     int initialTime = 60000;
-    private long timeLeftInMilliseconds= initialTime; //1 minutes
+    long timeLeftInMilliseconds = initialTime;
+
     boolean timerRunning = false;
-    //Timer-----------------------------------------------------------------------
-    ArrayList<PPLExercises> pullArray = new ArrayList<>();
+    //timer------------------------------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_pull);
+        setContentView(R.layout.activity_cardio_program);
+        cardioListView = findViewById(R.id.cardioListView);
+        restButton = findViewById(R.id.cardioRestButton);
+        addExerciseButton = findViewById(R.id.cardioAddExerciseButton);
 
-        //Table---------------------------------------------------
-        tableLayout = findViewById(R.id.tablelayout);
-        pullTitle = findViewById(R.id.pullTitle);
-        pullTitle.setText(R.string.pullTitle);
-        //Table---------------------------------------------------
+        title = findViewById(R.id.cardioProgram_Text);
+        title.setText("Pull: Back, Biceps");
+        title.setTextSize(20);
+        //title.setTextColor(Color.CYAN);
+        title.setTypeface(null, Typeface.BOLD);
 
-        //Timer---------------------------------------------------
-        countdownText = findViewById(R.id.countdown_text);
-        countdownButton = findViewById(R.id.countdown_button);
-        resetButton = findViewById(R.id.reset_button);
+        workoutsA = new ArrayList<String>();
+        descA = new ArrayList<String>();
+
+        //Add values to workouts,desc, imgid
+        //Make sure that the length of each array is the same. workouts[1]=desc[1]=imgid[1]
+
+        //Read in values from text files
+
+        addExerciseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addExercise(v);
+            }
+        });
+
+        restButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupRestTimer(view);
+            }
+        });
+        //Make the customListView
+        get_json();
+        updateEverything();
+    }
+
+    void updateEverything(){
+        //get_json();
+        customListView = new CustomListView(this,workouts, desc, imgid);
+
+
+        if(cardioListView.getAdapter() == null){
+            cardioListView.setAdapter(customListView);
+        }
+        else {
+            cardioListView.setAdapter(customListView);
+            customListView.notifyDataSetChanged();
+            cardioListView.invalidateViews();
+            cardioListView.refreshDrawableState();
+        }
+//        customListView.notifyDataSetChanged();
+//
+//        cardioListView.setAdapter(customListView);
+
+    }
+
+    void newExers(){
+        ArrayList<String> newList = new ArrayList<String>();
+        int prevSize = Array.getLength(workouts);
+        for(String k : workouts){
+            newList.add(k);
+        }
+        for(String k : workoutsA){
+            newList.add(k);
+        }
+
+        String[] temp = workouts;
+        workouts = new String[newList.size()];
+
+        workouts = newList.toArray(workouts);
+
+        ArrayList<String> newList2 = new ArrayList<String>();
+
+        for(String k : desc){
+            newList2.add(k);
+        }
+        for(String k : descA){
+            newList2.add(k);
+        }
+        desc = new String[newList2.size()];
+
+        desc = newList2.toArray(desc);
+        System.out.println("SIZES: " + Array.getLength(desc) + " , " + Array.getLength(workouts));
+        updateEverything();
+        //customListView.refreshEvents(this,workouts,desc,imgid);
+
+    }
+
+
+    public final void addExercise(final View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("New Exercise");
+        final EditText input = new EditText(this);
+        builder.setMessage("Add another exercise.");
+        builder.setView(input);
+        builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //goalName = input.getText().toString();
+                workoutsA.add(input.getText().toString());
+                addExerciseDesc(view);
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    public final void addExerciseDesc(final View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Exercise Description");
+        final EditText input = new EditText(this);
+        builder.setMessage("Enter a description for this new exercise.");
+        //input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        builder.setView(input);
+        builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //desiredGoal = Integer.parseInt(input.getText().toString());
+                descA.add(input.getText().toString());
+                newExers();
+                //updateEverything();
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //goalName = null;
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
+
+
+    //timer------------------------------------------------------------------------------------
+    public void popupRestTimer(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.timer_pop_up,null);
+        countdownText = (TextView) mView.findViewById(R.id.cardio_countdown_text);
+        TextView restText = (TextView) mView.findViewById(R.id.cardio_rest_text);
+        countdownButton= (Button) mView.findViewById(R.id.cardio_countdown_button);
+        resetButton = (Button) mView.findViewById(R.id.cardio_reset_button);
 
         updateTimer();
         countdownButton.setOnClickListener(new View.OnClickListener() {
@@ -65,60 +222,11 @@ public class DisplayPullA extends AppCompatActivity {
 
             }
         });
-        //Timer---------------------------------------------------
-        //Input from a text file containing exercise program
-        String workoutExercises = "";
-        try {
-            InputStream in = getAssets().open("pullExercises.txt");
-            int size = in.available();
-            byte[] buffer = new byte[size];
-            in.read(buffer);
-            in.close();
-            workoutExercises = new String(buffer);
-        }
-        catch(IOException ex){
-            ex.printStackTrace();
-        }
-
-        // Added each workout and it's stuff to an array
-        String[] strArray = workoutExercises.split("[,\\n]+");
-
-        String exercise = "";
-        String sets = "";
-        String reps = "";
-        String rest = "";
-        if (strArray.length != 0) {
-            for (int i = 0; i < strArray.length; i++) {
-                if (i % 4 == 0){
-                    exercise = strArray[i];
-                    //System.out.println("Exercise: " + exercise );
-                }
-                else if (i % 4 == 1){
-                    sets = strArray[i];
-                    //System.out.println("Sets: " + sets);
-                }
-                else if (i % 4 == 2){
-                    reps = strArray[i];
-                    //System.out.println("Reps: " + reps);
-                }
-                else if (i % 4 == 3){
-                    rest = strArray[i];
-                    //System.out.println("Rest: " + rest);
-                    pullPPL = new PPLExercises(exercise, sets, reps, rest);
-                    pullArray.add(pullPPL);
-                }
-            }
-        }
-        System.out.println(pullArray.size());
-        for(int i =0; i < pullArray.size(); i++){
-            PPLExercises p;
-            p = pullArray.get(i);
-            System.out.println(p.exercise);
-        }
-
-        tableStuff(pullArray);
+        builder.setView(mView);
+        builder.show();
 
     }
+
     public void startStop(){
         if(timerRunning){
             stopTimer();
@@ -171,58 +279,37 @@ public class DisplayPullA extends AppCompatActivity {
     }
 
     //Timer-----------------------------------------------------------------------
+    public void get_json(){
+        String json;
+        try{
+            InputStream is = getAssets().open("pullExercises.json");
 
-    //Table-----------------------------------------------------------------------
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
 
-    //Add exercise items to the table
-    public void tableStuff(ArrayList<PPLExercises> exerArray){
-        System.out.println(this);
-        PPLExercises exer;
-        for (int i = 0; i < exerArray.size(); i++) {
-            exer = exerArray.get(i);
-            String exercise = exer.getExercise();
-            String sets = exer.getSets();
-            String reps = exer.getReps();
-            String rest = exer.getRest();
+            json = new String(buffer,"UTF-8");
+            JSONArray jsonArray = new JSONArray(json);
 
-            TextView exerciseText;
-            TextView setsText;
-            TextView repsText;
-            TextView restText;
-            int textSize = 22;
-            int leftRightPadding = 15;
-            String rowText = String.format("%30s %10s %10s %10s ", exercise, sets, reps, rest);
+            workouts = new String[jsonArray.length()];
+            desc = new String[jsonArray.length()];
 
-            TableRow row = new TableRow(this);
-            TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-            row.setLayoutParams(lp);
-            //row.setPadding(50,50,50,50);
-            exerciseText = new TextView(this);
-            exerciseText.setText(exercise);
-            exerciseText.setTextSize(textSize);
-            exerciseText.setPadding(leftRightPadding, 25, leftRightPadding, 25);
-            row.addView(exerciseText);
+            String exercise;
+            ArrayList<JSONObject> jsonStuff = new ArrayList<>();
+            for (int i =0; i < jsonArray.length(); i++){
+                JSONObject obj = jsonArray.getJSONObject(i);
+                workouts[i] = obj.getString("Exercise");
+                desc[i] = obj.getString("Description");
+                //jsonStuff.add(obj);
+            }
 
-            setsText = new TextView(this);
-            setsText.setText(sets);
-            setsText.setPadding(leftRightPadding, 25, leftRightPadding, 25);
-            setsText.setTextSize(textSize);
-            row.addView(setsText);
 
-            repsText = new TextView(this);
-            repsText.setText(reps);
-            repsText.setPadding(leftRightPadding, 25, leftRightPadding, 25);
-            repsText.setTextSize(textSize);
-            row.addView(repsText);
-
-            restText = new TextView(this);
-            restText.setText(rest);
-            restText.setPadding(leftRightPadding, 25, leftRightPadding, 25);
-            restText.setTextSize(textSize);
-            row.addView(restText);
-            tableLayout.addView(row, i);
-
+            //System.out.println( jsonStuff.get(1).getString("Exercise"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }catch (JSONException e){
+            e.printStackTrace();
         }
     }
-    //Table-----------------------------------------------------------------------
 }

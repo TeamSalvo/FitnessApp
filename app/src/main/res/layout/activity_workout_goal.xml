@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.workout.WorkoutGoal">
 
+    <Button
+        android:id="@+id/addGoal"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="230dp"
+        android:text="@string/addGoal"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="230dp" />
+
     <TextView
         android:id="@+id/goalTitle"
         android:layout_width="262dp"
@@ -23,20 +37,20 @@
         android:id="@+id/goalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:text="@string/goal"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginLeft="32dp" />
+        android:layout_marginLeft="64dp" />
 
     <TextView
         android:id="@+id/metText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="112dp"
         android:layout_marginTop="16dp"
         android:text="@string/met"
         android:textSize="24sp"
@@ -44,7 +58,7 @@
         app:layout_constraintStart_toEndOf="@+id/goalText"
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
         android:layout_marginRight="40dp"
-        android:layout_marginLeft="144dp" />
+        android:layout_marginLeft="112dp" />
 
     <TextView
         android:id="@+id/desiredText"
@@ -58,43 +72,6 @@
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
         android:layout_marginRight="32dp" />
 
-    <EditText
-        android:id="@+id/goalName"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Goal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalText"
-        android:layout_marginLeft="32dp" />
-
-    <EditText
-        android:id="@+id/metGoal"
-        android:layout_width="49dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/goalName"
-        app:layout_constraintTop_toBottomOf="@+id/metText"
-        android:layout_marginLeft="14dp" />
-
-    <EditText
-        android:id="@+id/desiredGoal"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/desiredText"
-        android:layout_marginRight="31dp" />
-
     <TextView
         android:id="@+id/slashText"
         android:layout_width="wrap_content"
@@ -106,4 +83,29 @@
         app:layout_constraintStart_toEndOf="@+id/metText"
         app:layout_constraintTop_toBottomOf="@+id/goalTitle"
         android:layout_marginLeft="14dp" />
+
+    <ScrollView
+        android:id="@+id/goalListScroll"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/addGoal"
+        app:layout_constraintTop_toBottomOf="@+id/goalText">
+
+        <LinearLayout
+            android:id="@+id/vertLinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="411dp"
+        android:layout_height="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp" />
 </android.support.constraint.ConstraintLayout>

@@ -1,130 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/drawerLayout"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.workout.MainActivity">
+    tools:context="com.example.android.workout.MainActivity"
+    tools:openDrawer="start">
 
-    <!--<TextView-->
-    <!--android:id="@+id/workout_categories"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:clickable="true"-->
-    <!--android:padding="16dp"-->
-    <!--android:textSize="20sp"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:id="@+id/toolbar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:elevation="4dp">
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container">
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/black_gradient"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu"></android.support.design.widget.NavigationView>
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.android.workout.MainActivity">
 
-    <Button
-        android:id="@+id/workout_Schedule_Button"
-        android:layout_width="303dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:background="@drawable/black_gradient"
-        android:elevation="0dp"
-        android:fontFamily="serif"
-        android:text="@string/selectProgram"
-        android:textColor="@android:color/holo_blue_bright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!--<TextView-->
+        <!--android:id="@+id/workout_categories"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:clickable="true"-->
+        <!--android:padding="16dp"-->
+        <!--android:textSize="20sp"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
-        android:id="@+id/goal_button"
-        android:layout_width="303dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="256dp"
-        android:background="@drawable/black_gradient"
-        android:elevation="0dp"
-        android:fontFamily="serif"
-        android:text="@string/goals"
-        android:textColor="@android:color/holo_blue_bright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/workout_Weight_Button"
-        android:layout_width="303dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="172dp"
-        android:background="@drawable/black_gradient"
-        android:elevation="0dp"
-        android:fontFamily="serif"
-        android:text="Weight Graph"
-        android:textColor="@android:color/holo_blue_bright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/workout_Schedule_Button"
+            android:layout_width="303dp"
+            android:layout_height="73dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="88dp"
+            android:background="@drawable/black_gradient"
+            android:textColor="@android:color/holo_blue_bright"
+            android:elevation="0dp"
+            android:fontFamily="serif"
+            android:text="@string/selectProgram"
 
-    <Button
-        android:id="@+id/workout_User_Info_Button"
-        android:layout_width="303dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="340dp"
-        android:background="@drawable/black_gradient"
-        android:elevation="0dp"
-        android:fontFamily="serif"
-        android:text="User Info"
-        android:textColor="@android:color/holo_blue_bright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/about_me"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="260dp"
-        android:background="@drawable/black_gradient"
-        android:text="@string/about"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout_Schedule_Button" />
+        <Button
+            android:id="@+id/goal_button"
+            android:layout_width="303dp"
+            android:layout_height="73dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="256dp"
+            android:background="@drawable/black_gradient"
+            android:elevation="0dp"
+            android:fontFamily="serif"
+            android:text="@string/goals"
+            android:textColor="@android:color/holo_blue_bright"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="118dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="260dp"
-        android:background="@drawable/black_gradient"
-        android:text="Settings"
-        app:layout_constraintHorizontal_bias="0.849"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workout_Schedule_Button" />
+        <Button
+            android:id="@+id/workout_Weight_Button"
+            android:layout_width="303dp"
+            android:layout_height="73dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="172dp"
+            android:background="@drawable/black_gradient"
+            android:elevation="0dp"
+            android:fontFamily="serif"
+            android:text="Weight Graph"
+            android:textColor="@android:color/holo_blue_bright"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/workout_User_Info_Button"
+            android:layout_width="303dp"
+            android:layout_height="73dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="340dp"
+            android:background="@drawable/black_gradient"
+            android:elevation="0dp"
+            android:fontFamily="serif"
+            android:text="User Info"
+            android:textColor="@android:color/holo_blue_bright"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/about_me"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/black_gradient"
+            android:text="@string/about"
+            app:layout_constraintHorizontal_bias="0.183"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workout_Schedule_Button" />
+
+        <Button
+            android:id="@+id/settings_button"
+            android:layout_width="118dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/black_gradient"
+            android:text="Settings"
+            app:layout_constraintHorizontal_bias="0.849"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workout_Schedule_Button" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>
+
+
+
+
+

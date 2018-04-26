@@ -1,0 +1,31 @@
+[
+
+    {
+      "Exercise": "Deadlifts",
+      "Description": "3 sets",
+      "Image": "jumping_jacks"
+    },
+    {
+      "Exercise": "Pulldowns",
+      "Description": "3 sets",
+      "Image": "mountain_climbers"
+    },
+    {
+      "Exercise": "Cable Rows",
+      "Description": "3 sets",
+      "Image": "punches"
+    },
+    {
+      "Exercise": "Hammer Curls",
+      "Description": "3 sets",
+      "Image": "punches"
+    },
+    {
+      "Exercise": "Pull Ups",
+      "Description": "3 sets",
+      "Image": "punches"
+    }
+
+
+
+]

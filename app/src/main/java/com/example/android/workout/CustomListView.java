@@ -32,6 +32,7 @@ public class CustomListView extends ArrayAdapter<String>{
         this.workout = workout;
         this.desc = desc;
         this.imgId = imgId;
+
     }
 
 
@@ -70,5 +71,14 @@ public class CustomListView extends ArrayAdapter<String>{
             tvw2 = v.findViewById(R.id.cardioDesc);
             ivw = v.findViewById(R.id.cardioImages);
         }
+    }
+
+
+    public void refreshEvents(Activity context,String[] workout, String[] desc, Integer[] imgId) {
+        this.context = context;
+        this.workout = workout;
+        this.desc = desc;
+        this.imgId = imgId;
+        notifyDataSetChanged();
     }
 }
