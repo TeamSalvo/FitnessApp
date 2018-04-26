@@ -22,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardioProgram extends AppCompatActivity {
@@ -30,11 +31,14 @@ public class CardioProgram extends AppCompatActivity {
     String[] desc;
     Button restButton;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.girl_one, R.drawable.girl_one, R.drawable.girl_one};
+    ArrayList<String> workoutsA;
+    ArrayList<String> descA;
+
+    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,};
 
     ArrayList<String> numberList = new ArrayList<>();
 
-
+    CustomListView customListView;
 
     //timer------------------------------------------------------------------------------------
     TextView countdownText;
@@ -55,6 +59,10 @@ public class CardioProgram extends AppCompatActivity {
         cardioListView = findViewById(R.id.cardioListView);
         restButton = findViewById(R.id.cardioRestButton);
         addExerciseButton = findViewById(R.id.cardioAddExerciseButton);
+
+        workoutsA = new ArrayList<String>();
+        descA = new ArrayList<String>();
+
         //Add values to workouts,desc, imgid
         //Make sure that the length of each array is the same. workouts[1]=desc[1]=imgid[1]
 
@@ -73,13 +81,60 @@ public class CardioProgram extends AppCompatActivity {
             }
         });
         //Make the customListView
+        get_json();
         updateEverything();
     }
 
     void updateEverything(){
-        get_json();
-        CustomListView customListView = new CustomListView(this,workouts, desc, imgid);
-        cardioListView.setAdapter(customListView);
+        //get_json();
+        customListView = new CustomListView(this,workouts, desc, imgid);
+
+
+        if(cardioListView.getAdapter() == null){
+            cardioListView.setAdapter(customListView);
+        }
+        else {
+            cardioListView.setAdapter(customListView);
+            customListView.notifyDataSetChanged();
+            cardioListView.invalidateViews();
+            cardioListView.refreshDrawableState();
+        }
+//        customListView.notifyDataSetChanged();
+//
+//        cardioListView.setAdapter(customListView);
+
+    }
+
+    void newExers(){
+        ArrayList<String> newList = new ArrayList<String>();
+        int prevSize = Array.getLength(workouts);
+        for(String k : workouts){
+            newList.add(k);
+        }
+        for(String k : workoutsA){
+            newList.add(k);
+        }
+
+        String[] temp = workouts;
+        workouts = new String[newList.size()];
+
+        workouts = newList.toArray(workouts);
+
+        ArrayList<String> newList2 = new ArrayList<String>();
+
+        for(String k : desc){
+            newList2.add(k);
+        }
+        for(String k : descA){
+            newList2.add(k);
+        }
+        desc = new String[newList2.size()];
+
+        desc = newList2.toArray(desc);
+        System.out.println("SIZES: " + Array.getLength(desc) + " , " + Array.getLength(workouts));
+        updateEverything();
+        //customListView.refreshEvents(this,workouts,desc,imgid);
+
     }
 
 
@@ -93,6 +148,7 @@ public class CardioProgram extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //goalName = input.getText().toString();
+                workoutsA.add(input.getText().toString());
                 addExerciseDesc(view);
             }
         });
@@ -117,7 +173,9 @@ public class CardioProgram extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //desiredGoal = Integer.parseInt(input.getText().toString());
-                //setCompletionDate(view);
+                descA.add(input.getText().toString());
+                newExers();
+                //updateEverything();
             }
         });
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
