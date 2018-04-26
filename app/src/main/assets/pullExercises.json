@@ -1,33 +1,31 @@
 [
-  {
-    "Exercise": "Back Squats",
-    "Description": "3 sets",
-    "Image": "jumping_jacks"
-  },
-  {
-    "Exercise": "Leg Press",
-    "Description": "3 sets",
-    "Image": "mountain_climbers"
-  },
-  {
-    "Exercise": "DeadLifts",
-    "Description": "3 sets",
-    "Image": "punches"
-  },
-  {
-    "Exercise": "Leg Extensions",
-    "Description": "3 sets",
-    "Image": "punches"
-  },
-  {
-    "Exercise": "Leg Curls",
-    "Description": "3 sets",
-    "Image": "punches"
-  },
-  {
-    "Exercise": "Rest",
-    "Description": "Good Job! Rest up for the next workout tomorrow!",
-    "Image": ""
-  }
+
+    {
+      "Exercise": "Deadlifts",
+      "Description": "3 sets",
+      "Image": "jumping_jacks"
+    },
+    {
+      "Exercise": "Pulldowns",
+      "Description": "3 sets",
+      "Image": "mountain_climbers"
+    },
+    {
+      "Exercise": "Cable Rows",
+      "Description": "3 sets",
+      "Image": "punches"
+    },
+    {
+      "Exercise": "Hammer Curls",
+      "Description": "3 sets",
+      "Image": "punches"
+    },
+    {
+      "Exercise": "Pull Ups",
+      "Description": "3 sets",
+      "Image": "punches"
+    }
+
+
 
 ]

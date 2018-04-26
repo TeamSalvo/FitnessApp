@@ -40,7 +40,7 @@ public class DisplayLegsA extends AppCompatActivity {
 
     TextView title;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
+    private Integer[] imgid={R.drawable.squatting,R.drawable.legpress,R.drawable.realdeadlifts,R.drawable.legext,R.drawable.legcurl,R.drawable.dot,R.drawable.dot,R.drawable.dot};
 
     ArrayList<String> numberList = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class DisplayLegsA extends AppCompatActivity {
         title.setText("Legs: Quads, Hamstrings");
         title.setTextSize(20);
         title.setTypeface(null, Typeface.BOLD);
-        title.setTextColor(Color.CYAN);
+        //title.setTextColor(Color.CYAN);
 
         workoutsA = new ArrayList<String>();
         descA = new ArrayList<String>();
