@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="230dp"
         android:text="@string/addGoal"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="230dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/goalTitle"
@@ -37,68 +37,52 @@
         android:id="@+id/goalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:text="@string/goal"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginLeft="64dp" />
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle" />
 
     <TextView
         android:id="@+id/metText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginRight="40dp"
         android:layout_marginStart="112dp"
         android:layout_marginTop="16dp"
         android:text="@string/met"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/desiredText"
         app:layout_constraintStart_toEndOf="@+id/goalText"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="112dp" />
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle" />
 
     <TextView
         android:id="@+id/desiredText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
         android:text="@string/desired"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginRight="32dp" />
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle" />
 
     <TextView
         android:id="@+id/slashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="16dp"
         android:text="/"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/metText"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitle"
-        android:layout_marginLeft="14dp" />
-
-    <ScrollView
-        android:id="@+id/goalListScroll"
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/addGoal"
-        app:layout_constraintTop_toBottomOf="@+id/goalText">
-
-        <LinearLayout
-            android:id="@+id/vertLinLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/goalTitle" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -108,4 +92,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="2dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="395dp"
+        android:layout_height="435dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/addGoal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goalText" />
+
 </android.support.constraint.ConstraintLayout>

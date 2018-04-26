@@ -1,5 +1,7 @@
 package com.example.android.workout;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.text.DateFormat;
@@ -21,13 +24,16 @@ import static android.text.InputType.TYPE_DATETIME_VARIATION_DATE;
 
 public class WorkoutGoal extends AppCompatActivity {
 
-    LinearLayout layout;
+    ListView layout;
     Button addGoalButton;
     ProgressBar achievementProgress;
     String goalName = null;
     Integer desiredGoal =  null;
     Date goalDate = null;
-    ArrayList <GoalObject> goalList = new ArrayList <>();
+    ArrayList <String>  goalNameList = new ArrayList <>();
+    ArrayList <String>  goalMetList = new ArrayList <>();
+    ArrayList <String>  goalDesiredList = new ArrayList <>();
+    Activity context = this;
 
 
     @Override
@@ -35,7 +41,7 @@ public class WorkoutGoal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_goal);
 
-        layout = findViewById(R.id.vertLinLayout);
+        layout = findViewById(R.id.listView);
         addGoalButton = findViewById(R.id.addGoal);
         achievementProgress = findViewById(R.id.progressBar);
 
@@ -43,23 +49,42 @@ public class WorkoutGoal extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 addGoalDialog(v);
-                GoalObject newGoal = new GoalObject();
+            }
+        });
+        updater();
+    }
+
+    public final void updater()
+    {
+        System.out.println(goalName + " " + desiredGoal + " " + goalDate);
+        if(goalName != null)
+        {
+            System.out.println(goalName + " " + desiredGoal + " " + goalDate);
+            goalNameList.add(goalName);
+            goalMetList.add("0");
+            goalDesiredList.add(desiredGoal.toString());
+            String[] tempName = new String[goalNameList.size()];
+            goalNameList.toArray(tempName);
+            String[] tempMet = new String[goalNameList.size()];
+            goalMetList.toArray(tempMet);
+            String[] tempDesired = new String[goalNameList.size()];
+            goalDesiredList.toArray(tempMet);
+            goallistlayoutClass newGoal = new goallistlayoutClass(context, tempName, tempMet, tempDesired);
                 /*
                 newGoal.setGoalDesired(desiredGoal.toString());
                 newGoal.setGoalMet("0");
                 newGoal.setGoalName(goalName);
                 newGoal.setGoalDate(goalDate);
                 */
-                goalName = null;
-                desiredGoal = null;
-                goalDate = null;
-                if (newGoal == null)
-                {
-                    goalList.add(newGoal);
-                    setUpVertLayout(v);
-                }
+            if (layout.getAdapter() == null) {
+                layout.setAdapter(newGoal);
+            } else {
+                layout.setAdapter(newGoal);
+                newGoal.notifyDataSetChanged();
+                layout.invalidateViews();
+                layout.refreshDrawableState();
             }
-        });
+        }
     }
 
     public final void addGoalDialog(final View view){
@@ -125,6 +150,7 @@ public class WorkoutGoal extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                updater();
             }
         });
         builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -136,9 +162,10 @@ public class WorkoutGoal extends AppCompatActivity {
             }
         });
         builder.show();
+
     }
 
-    public final void setUpVertLayout(View view)
+   /* public final void setUpVertLayout(View view)
     {
         layout.removeAllViews();
         for(GoalObject gO : goalList)
@@ -148,5 +175,5 @@ public class WorkoutGoal extends AppCompatActivity {
                i = 1+2;
             layout.addView(gO.getLayoutView());
         }
-    }
+    }*/
 }
