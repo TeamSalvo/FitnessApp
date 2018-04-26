@@ -1,0 +1,28 @@
+[
+  {
+    "Exercise": "Barbell Bench Press",
+    "Description": "3 sets",
+    "Image": "jumping_jacks"
+  },
+  {
+    "Exercise": "Overhead Press",
+    "Description": "3 sets",
+    "Image": "mountain_climbers"
+  },
+  {
+    "Exercise": "Incline Dumbbell Press",
+    "Description": "3 sets",
+    "Image": "punches"
+  },
+  {
+    "Exercise": "Tricep Pushdowns",
+    "Description": "3 sets",
+    "Image": "punches"
+  },
+  {
+    "Exercise": "Overhead Tricep Extensions",
+    "Description": "3 sets",
+    "Image": "punches"
+  }
+
+]

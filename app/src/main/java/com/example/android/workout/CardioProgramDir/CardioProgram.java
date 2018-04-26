@@ -5,6 +5,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CardioProgram extends AppCompatActivity {
@@ -29,13 +31,20 @@ public class CardioProgram extends AppCompatActivity {
     String[] desc;
     Button restButton;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.girl_one, R.drawable.girl_one, R.drawable.girl_one};
+    ArrayList<String> workoutsA;
+    ArrayList<String> descA;
+
+    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
 
     ArrayList<String> numberList = new ArrayList<>();
+
+    CustomListView customListView;
+
     //timer------------------------------------------------------------------------------------
     TextView countdownText;
     Button countdownButton;
     Button resetButton;
+    Button addExerciseButton;
     CountDownTimer countDownTimer;
 
     int initialTime = 60000;
@@ -49,10 +58,21 @@ public class CardioProgram extends AppCompatActivity {
         setContentView(R.layout.activity_cardio_program);
         cardioListView = findViewById(R.id.cardioListView);
         restButton = findViewById(R.id.cardioRestButton);
+        addExerciseButton = findViewById(R.id.cardioAddExerciseButton);
+
+        workoutsA = new ArrayList<String>();
+        descA = new ArrayList<String>();
+
         //Add values to workouts,desc, imgid
         //Make sure that the length of each array is the same. workouts[1]=desc[1]=imgid[1]
 
         //Read in values from text files
+
+       addExerciseButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addExercise(v);
+            }
+        });
 
         restButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,17 +81,112 @@ public class CardioProgram extends AppCompatActivity {
             }
         });
         //Make the customListView
+        get_json();
         updateEverything();
     }
 
     void updateEverything(){
-        get_json();
-        CustomListView customListView = new CustomListView(this,workouts, desc, imgid);
-        cardioListView.setAdapter(customListView);
+        //get_json();
+        customListView = new CustomListView(this,workouts, desc, imgid);
+
+
+        if(cardioListView.getAdapter() == null){
+            cardioListView.setAdapter(customListView);
+        }
+        else {
+            cardioListView.setAdapter(customListView);
+            customListView.notifyDataSetChanged();
+            cardioListView.invalidateViews();
+            cardioListView.refreshDrawableState();
+        }
+//        customListView.notifyDataSetChanged();
+//
+//        cardioListView.setAdapter(customListView);
+
+    }
+
+    void newExers(){
+        ArrayList<String> newList = new ArrayList<String>();
+        int prevSize = Array.getLength(workouts);
+        for(String k : workouts){
+            newList.add(k);
+        }
+        for(String k : workoutsA){
+            newList.add(k);
+        }
+
+        String[] temp = workouts;
+        workouts = new String[newList.size()];
+
+        workouts = newList.toArray(workouts);
+
+        ArrayList<String> newList2 = new ArrayList<String>();
+
+        for(String k : desc){
+            newList2.add(k);
+        }
+        for(String k : descA){
+            newList2.add(k);
+        }
+        desc = new String[newList2.size()];
+
+        desc = newList2.toArray(desc);
+        System.out.println("SIZES: " + Array.getLength(desc) + " , " + Array.getLength(workouts));
+        updateEverything();
+        //customListView.refreshEvents(this,workouts,desc,imgid);
+
     }
 
 
+    public final void addExercise(final View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("New Exercise");
+        final EditText input = new EditText(this);
+        builder.setMessage("Add another exercise.");
+        builder.setView(input);
+        builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //goalName = input.getText().toString();
+                workoutsA.add(input.getText().toString());
+                addExerciseDesc(view);
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
+        builder.show();
+    }
+
+    public final void addExerciseDesc(final View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Exercise Description");
+        final EditText input = new EditText(this);
+        builder.setMessage("Enter a description for this new exercise.");
+        //input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        builder.setView(input);
+        builder.setPositiveButton("NEXT", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //desiredGoal = Integer.parseInt(input.getText().toString());
+                descA.add(input.getText().toString());
+                newExers();
+                //updateEverything();
+            }
+        });
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //goalName = null;
+                dialog.cancel();
+            }
+        });
+        builder.show();
+    }
 
 
     //timer------------------------------------------------------------------------------------
