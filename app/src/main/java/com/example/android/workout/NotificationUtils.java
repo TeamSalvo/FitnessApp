@@ -8,9 +8,15 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+
+import static android.support.v4.media.AudioAttributesCompat.USAGE_ALARM;
 
 public class NotificationUtils extends ContextWrapper {
     private NotificationManager mManager;
@@ -18,6 +24,7 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
     public static final String BASIC_NOTIF = "BASIC_NOTIF";
     boolean enableVibrate = true;
+    boolean enableSound = false;
     boolean enableLights = true;
 
     public NotificationUtils(Context base){
@@ -31,6 +38,13 @@ public class NotificationUtils extends ContextWrapper {
 
             androidChannel.enableLights(enableLights);
             androidChannel.enableVibration(enableVibrate);
+
+            AudioAttributes att = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                    .build();
+
+            androidChannel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, att);
             androidChannel.setLightColor(Color.GREEN);
             androidChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
         }
@@ -50,6 +64,10 @@ public class NotificationUtils extends ContextWrapper {
         enableVibrate = set;
     }
 
+    public void updateSound(boolean set){
+        enableSound = set;
+    }
+
     public void launchNotification() {
         Intent notifyIntent = new Intent(this, DisplayCheckpage.class);
         notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -63,15 +81,28 @@ public class NotificationUtils extends ContextWrapper {
                 .setContentIntent(notifyPendingIntent)
                 .setAutoCancel(true);
 
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        if(enableSound) {
+            mBuilder.setSound(alarmSound);
+        }
+
+        if(enableVibrate) {
+            mBuilder.setVibrate(new long[] { 100, 100});
+        }
+
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
         int notificationId = 0;
 
+        /*
         Notification note = mBuilder.build();
         if(enableVibrate) {
             note.defaults |= Notification.DEFAULT_VIBRATE;
         }
-        note.defaults |= Notification.DEFAULT_SOUND;
+        if(enableSound) {
+            note.defaults |= Notification.DEFAULT_SOUND;
+
+        }*/
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, mBuilder.build());
 
