@@ -34,7 +34,7 @@ public class CardioProgram extends AppCompatActivity {
     ArrayList<String> workoutsA;
     ArrayList<String> descA;
 
-    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,};
+    private Integer[] imgid={R.drawable.jumping_jacks,R.drawable.mountain_climbers,R.drawable.punches,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot,R.drawable.dot};
 
     ArrayList<String> numberList = new ArrayList<>();
 

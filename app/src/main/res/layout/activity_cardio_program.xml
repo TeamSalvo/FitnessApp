@@ -31,39 +31,29 @@
 
     <Button
         android:id="@+id/cardioRestButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
 
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+
         android:padding="10dp"
         android:text="Rest"
-        app:layout_constraintRight_toLeftOf="@id/cardioAddExerciseButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardioListView"
-        tools:layout_editor_absoluteX="58dp"
-        tools:text="Rest" />
+        tools:layout_editor_absoluteX="76dp"
+        tools:text="Rest"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/cardioAddExerciseButton"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
         android:padding="10dp"
         android:text="Add Exercise"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.579"
-        app:layout_constraintRight_toLeftOf="@id/cardioRestButton"
         app:layout_constraintStart_toEndOf="@+id/cardioRestButton"
-        app:layout_constraintTop_toBottomOf="@id/cardioListView"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="Add Exercise"
-        android:layout_marginLeft="8dp" />
+        tools:text="Add Exercise" />
 
 
 
