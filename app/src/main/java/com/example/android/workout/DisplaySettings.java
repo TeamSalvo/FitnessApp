@@ -39,10 +39,7 @@ public class DisplaySettings extends AppCompatActivity {
         soundSwitch = (Switch)findViewById(R.id.sound_Switch);
 
         notificationsSwitch.setChecked(notificationUtils.enableNotifications);
-        if(notificationUtils.enableNotifications){
-            disableOtherButtons(notificationUtils.enableNotifications);
-        }
-
+        disableOtherButtons(notificationUtils.enableNotifications);
         vibrateSwitch.setChecked(notificationUtils.enableVibrate);
         soundSwitch.setChecked(notificationUtils.enableSound);
 
@@ -62,6 +59,8 @@ public class DisplaySettings extends AppCompatActivity {
 
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                notificationUtils.updateEnable(isChecked);
+
                 disableOtherButtons(isChecked);
             }
         });

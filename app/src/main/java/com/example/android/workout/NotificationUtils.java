@@ -146,6 +146,12 @@ public class NotificationUtils extends ContextWrapper {
         saveFile();
     }
 
+    public void updateEnable(boolean set){
+        enableNotifications = set;
+
+        saveFile();
+    }
+
     public void launchNotification() {
         readFile();
 
