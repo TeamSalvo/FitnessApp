@@ -15,6 +15,13 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import static android.support.v4.media.AudioAttributesCompat.USAGE_ALARM;
 
@@ -23,13 +30,16 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_ID = "com.android.fitnessalerts.ANDROID";
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
     public static final String BASIC_NOTIF = "BASIC_NOTIF";
-    boolean enableVibrate = true;
-    boolean enableSound = false;
-    boolean enableLights = true;
+    boolean enableVibrate;
+    boolean enableSound;
+    boolean enableLights;
 
     public NotificationUtils(Context base){
         super(base);
         createChannels();
+
+        generateSettingsDoc();
+        readFile();
     }
 
     private void createChannels() {
@@ -50,6 +60,66 @@ public class NotificationUtils extends ContextWrapper {
         }
     }
 
+    private void generateSettingsDoc(){
+        try {
+            File checkFile = getApplicationContext().getFileStreamPath("salvoSettings.txt");
+            if(!checkFile.exists()){
+                FileOutputStream file = openFileOutput("salvoSettings.txt",MODE_PRIVATE);
+                OutputStreamWriter outputFile = new OutputStreamWriter(file);
+
+                outputFile.write("true\n");
+                outputFile.write("false\n");
+                outputFile.write("true\n");
+
+                outputFile.flush();
+                outputFile.close();
+            }
+        } catch (Exception e) {
+            Toast.makeText(NotificationUtils.this, e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void readFile(){
+
+        File file = getApplicationContext().getFileStreamPath("salvoSettings.txt");
+        String lineFromFile;
+
+        if(file.exists()){
+            try{
+                BufferedReader reader = new BufferedReader(new InputStreamReader(openFileInput("salvoSettings.txt")));
+                lineFromFile = reader.readLine();
+                enableVibrate = Boolean.parseBoolean(lineFromFile);
+                lineFromFile = reader.readLine();
+                enableSound = Boolean.parseBoolean(lineFromFile);
+                lineFromFile = reader.readLine();
+                enableLights = Boolean.parseBoolean(lineFromFile);
+
+            }catch (Exception e){
+                Toast.makeText(NotificationUtils.this, e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void saveFile(){
+        try {
+            FileOutputStream file = openFileOutput("salvoSettings.txt",MODE_PRIVATE);
+            OutputStreamWriter outputFile = new OutputStreamWriter(file);
+
+
+            outputFile.write(enableVibrate + "\n");
+            outputFile.write(enableSound + "\n");
+            outputFile.write(enableLights + "\n");
+
+
+            outputFile.flush();
+            outputFile.close();
+
+            Toast.makeText(NotificationUtils.this, "Saved",Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(NotificationUtils.this, e.getMessage(),Toast.LENGTH_LONG).show();
+        }
+    }
+
     private NotificationManager getManager() {
         if (mManager == null) {
             mManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -62,21 +132,27 @@ public class NotificationUtils extends ContextWrapper {
 
     public void updateVibrate(boolean set){
         enableVibrate = set;
+
+        saveFile();
     }
 
     public void updateSound(boolean set){
         enableSound = set;
+
+        saveFile();
     }
 
     public void launchNotification() {
-        Intent notifyIntent = new Intent(this, DisplayCheckpage.class);
+        readFile();
+
+        Intent notifyIntent = new Intent(this, DisplaySettings.class);
         notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent notifyPendingIntent = PendingIntent.getActivity(this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, ANDROID_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle("Fitness Woo!")
-                .setContentText("Tap me to go to the secret page!")
+                .setContentText("This is a test notification hooray!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(notifyPendingIntent)
                 .setAutoCancel(true);

@@ -28,10 +28,6 @@ public class DisplaySettings extends AppCompatActivity {
         soundSwitch = new Switch(this);
         testNotification = new Button(this);
 
-        notificationsSwitch.setChecked(true);
-        vibrateSwitch.setChecked(true);
-
-
         final NotificationUtils notificationUtils = new NotificationUtils(this);
 
         //if (Build.VERSION.SDK_INT >= 21) {
