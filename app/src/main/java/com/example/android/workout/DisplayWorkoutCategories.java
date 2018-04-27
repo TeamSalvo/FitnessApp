@@ -8,12 +8,12 @@ import android.widget.Button;
 
 import com.example.android.workout.CardioProgramDir.Cardio;
 import com.example.android.workout.PPLProgram.DisplayPPLProgram;
-
+import com.example.android.workout.MaxRepCalc;
 public class DisplayWorkoutCategories extends AppCompatActivity {
     Button pplBut;
     Button strongBut;
     Button cardioBut;
-
+    Button maxRepCalcBut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,7 @@ public class DisplayWorkoutCategories extends AppCompatActivity {
         pplBut = findViewById(R.id.ppl_button);
         strongBut = findViewById(R.id.strongLift_button);
         cardioBut = findViewById(R.id.cardio_button);
+        maxRepCalcBut = findViewById(R.id.maxRepCalcButton);
 
         pplBut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,6 +47,13 @@ public class DisplayWorkoutCategories extends AppCompatActivity {
 
             }
         });
+        maxRepCalcBut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                openMaxRepCalc(v);
+
+            }
+        });
     }
 
     public final void openPPLProgram(View view){
@@ -60,6 +68,11 @@ public class DisplayWorkoutCategories extends AppCompatActivity {
 
     public final void openCardioProgram(View view){
         Intent intent = new Intent(this, Cardio.class);
+        startActivity(intent);
+    }
+
+    public final void openMaxRepCalc(View view){
+        Intent intent = new Intent(this, MaxRepCalc.class);
         startActivity(intent);
     }
 }
