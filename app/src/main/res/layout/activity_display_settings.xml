@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.workout.DisplayAbout">
 
+    <Switch
+        android:id="@+id/notifications_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="171dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Enable Notifications"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Switch
+        android:id="@+id/sound_Switch"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="256dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="256dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:checked="false"
+        android:text="Sound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vibrate_Switch" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="262dp"
@@ -19,5 +50,54 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginEnd="123dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginRight="123dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="36dp"
+        android:text="Notifications"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Switch
+        android:id="@+id/vibrate_Switch"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="251dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:text="Vibrate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifications_switch"
+        tools:checked="true" />
+
+    <Button
+        android:id="@+id/launch_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginLeft="113dp"
+        android:layout_marginRight="114dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="8dp"
+        android:text="Test Notification"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.979" />
 
 </android.support.constraint.ConstraintLayout>
