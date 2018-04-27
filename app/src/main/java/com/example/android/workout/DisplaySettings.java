@@ -38,6 +38,14 @@ public class DisplaySettings extends AppCompatActivity {
         vibrateSwitch = (Switch)findViewById(R.id.vibrate_Switch);
         soundSwitch = (Switch)findViewById(R.id.sound_Switch);
 
+        notificationsSwitch.setChecked(notificationUtils.enableNotifications);
+        if(notificationUtils.enableNotifications){
+            disableOtherButtons(notificationUtils.enableNotifications);
+        }
+
+        vibrateSwitch.setChecked(notificationUtils.enableVibrate);
+        soundSwitch.setChecked(notificationUtils.enableSound);
+
         testNotification = (Button)findViewById(R.id.launch_notification);
 
         vibrateSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

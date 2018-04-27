@@ -30,9 +30,10 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_ID = "com.android.fitnessalerts.ANDROID";
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
     public static final String BASIC_NOTIF = "BASIC_NOTIF";
-    boolean enableVibrate;
-    boolean enableSound;
-    boolean enableLights;
+    public boolean enableNotifications;
+    public boolean enableVibrate;
+    public boolean enableSound;
+    public boolean enableLights;
 
     public NotificationUtils(Context base){
         super(base);
@@ -68,6 +69,7 @@ public class NotificationUtils extends ContextWrapper {
                 OutputStreamWriter outputFile = new OutputStreamWriter(file);
 
                 outputFile.write("true\n");
+                outputFile.write("true\n");
                 outputFile.write("false\n");
                 outputFile.write("true\n");
 
@@ -88,6 +90,8 @@ public class NotificationUtils extends ContextWrapper {
             try{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(openFileInput("salvoSettings.txt")));
                 lineFromFile = reader.readLine();
+                enableNotifications = Boolean.parseBoolean(lineFromFile);
+                lineFromFile = reader.readLine();
                 enableVibrate = Boolean.parseBoolean(lineFromFile);
                 lineFromFile = reader.readLine();
                 enableSound = Boolean.parseBoolean(lineFromFile);
@@ -105,7 +109,7 @@ public class NotificationUtils extends ContextWrapper {
             FileOutputStream file = openFileOutput("salvoSettings.txt",MODE_PRIVATE);
             OutputStreamWriter outputFile = new OutputStreamWriter(file);
 
-
+            outputFile.write(enableNotifications + "\n");
             outputFile.write(enableVibrate + "\n");
             outputFile.write(enableSound + "\n");
             outputFile.write(enableLights + "\n");
