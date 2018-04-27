@@ -1,6 +1,7 @@
 package com.example.android.workout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Button userInfoButton;
     Button goalButton;
     Button settingsButton;
+
+    TextView title;
     //TODO Instead of creating a textview of workout categories, create several buttons that will link to textviews
 
     public final void openWorkoutCategories(View view){
@@ -58,15 +62,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        title = findViewById(R.id.main_title);
+
+
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
         drawer = findViewById(R.id.drawerLayout);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //drawer.addDrawerListener(toggle);
+        //toggle.syncState();
 
         //Pulls up workout schedule
         workoutSchedule = (Button)findViewById(R.id.workout_Schedule_Button);
@@ -81,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
 
         settingsButton = (Button)findViewById(R.id.settings_button);
 
+
+        title.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Uri uri = Uri.parse("https://github.com/TeamSalvo/FitnessApp"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+            }
+        });
 
         workoutSchedule.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

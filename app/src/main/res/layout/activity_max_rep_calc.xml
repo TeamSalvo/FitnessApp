@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.workout.MaxRepCalc">
+
+    <EditText
+        android:id="@+id/maxRep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="168dp"
+        android:ems="10"
+        android:hint="Weight lifted"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="121dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toEndOf="@+id/maxRep"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="194dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="1 Rep Max"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="One Rep Max: " />
+
+    <TextView
+        android:id="@+id/maxRep100"
+        android:layout_width="125dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="MAX REP!"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/maxRep90Text"
+        android:layout_width="85dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="308dp"
+        android:text=" 90% One-RM"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep80Text"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="308dp"
+        android:text="80% One-RM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep70Text"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="404dp"
+        android:text="70% One-RM"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep60Text"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="404dp"
+        android:text="60% One-RM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep90"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxRep90Text"
+        android:layout_marginLeft="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep80"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="80dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxRep80Text"
+        android:layout_marginRight="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep70"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxRep70Text"
+        android:layout_marginLeft="80dp" />
+
+    <TextView
+        android:id="@+id/maxRep60"
+        android:layout_width="82dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="80dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxRep60Text"
+        android:layout_marginRight="80dp" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="8dp"
+        android:text="Calculate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxRep"
+        android:layout_marginLeft="92dp" />
+
+
+</android.support.constraint.ConstraintLayout>
